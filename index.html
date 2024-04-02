@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing the store</title>
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        margin: 0px;
+        padding: 0px;
+        background-color: #f4d5d9;
+    }
+    header{
+        padding: 20px 0px;
+    }
+    .headline{
+        text-align: center;
+        margin: 40px 0px;
+    }
+    .headline2{
+        text-align: center;
+        margin: 10px 0px;
+    }
+    h1{
+        font-size: 25px;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        display: inline-block;
+        color: #555;
+        font-weight: 600;
+    }
+    h2{
+        font-size: 20px;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        display: inline-block;
+        color: #070707;
+        font-weight: 600;
+    }
+    nav ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    nav ul li{
+        display: inline-block;
+        margin-right: 20px;
+    }
+    nav ul li a{
+        text-decoration: none;
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+    section{
+        padding: 20px;
+        margin: 20px auto;
+        background-color: #eef1ee;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+    }
+    .animated-text{
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+    }
+    .animated-text::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, transparent 0%, #f4d5d9 50%, transparent 100%);
+        animation: slide 2s linear infinite;
+    }
+    .animated-text p{
+        margin: 10px 0;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+        animation: slide-up 1s ease forwards;
+        font-size: 20px;
+        line-height: 1.6;
+        text-align: justify;
+    }
+    .animated-text:nth-child(odd) p{
+        animation-delay: 1s;
+    }
+    @keyframes slide-up{
+        from{
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        to{
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    @keyframes slide{
+        0%{
+            transform: translateX(-100%);
+        }
+        100%{
+            transform: translateX(100%);
+        }
+    }
+    .illustration{
+        display: block;
+        margin: 20px auto;
+        max-width: 100%;
+    }
+</style>
+</head>
+<body>
+    <div class="headline">
+        <h1>Welcome to The cake corner</h1>
+    </div>
+    <section>
+        <div class="headline2">
+            <h2>Introduction</h2>
+        </div>
+        <div class="animated-text">
+            <p>Xin chào! Chúng mình rất hân hạnh khi được mang đến cho bạn những hương vị ngọt ngào.
+                Bánh Donut luôn được ví như những nốt nhạc nhiều màu sắc, chúng độc đáo và thu hút. 
+                Mỗi hương vị của bánh luôn mang đến một sự thú vị đến ngạc nhiên cho người thưởng thức. 
+                Donut được dùng để ăn tráng miệng, trà chiều hay là bữa ăn vặt nhẹ nhàng. Bánh đều có 
+                thể chế biến bằng cách rán hoặc nướng theo sở thích, kết hợp cùng lớp kem min màng cùng
+                những hạt cốm đầy màu sắc được rải lên trên bánh.
+                Với sự ngọt ngào và đầy quyến rũ của chiếc bánh donut, The Cake Corner được ra đời, nó 
+                mang ý nghĩa là "Thế giới của những chiếc bánh". Chúng mình sẵn lòng cho ra lò những chiếc
+                bánh thơm phúc, hấp dẫn và ngọt ngào nhất đến cho bạn. Đừng chần chừ mà hãy thưởng thức 
+                liền tay những chiếc bánh đầy mê hoặc này!
+            </p>
+        </div>
+        <img src="The/Donuts.jpg" alt="Illustration" class="illustration">
+    </section>
+    <section>
+        <div class="headline2">
+            <h2>Service</h2>
+        </div>
+        <div class="animated-text">
+            <p>Chúng mình có bán tại cửa hàng, có giao đến tận nơi và có cả làm theo yêu cầu của bạn.</p>
+        </div>
+        <img src="The/cake worker.jpg" alt="Illustration" class="illustration">
+    </section>
+</body>
+</html>
