@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch làm việc</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4d5d9;
+        margin-right: 30px;
+        }
+      h1{
+        font-size: 18px;
+        color: #111;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        border: 2px solid #e2a4a4;
+        display: inline-block;
+        color: #555;
+        font-weight: 600;
+        }
+      .headline{
+        text-align: center;
+        margin: 40px 0px;
+        }
+      .year-month-form {
+        padding-left: 50px;
+        }
+      table {
+          /*border-collapse: collapse;*/
+          width: 100%;
+        }
+      th, td {
+        border: 1px solid #9a9696;
+        padding: 8px;
+        text-align: center;
+        }
+      th {
+        background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+  <div class="headline">
+    <h1>Lịch làm việc</h1>
+  </div>
+<form class="year-month-form">
+    Năm:
+    <input type="number" id="year" value="2024" style="margin-bottom: 30px;">
+    Tháng:
+    <input type="number" id="month" value="3">
+    <button type="button" onclick="generateCalendar()">Tạo lịch</button>
+</form>
+<table id="calendar" style="
+  margin-left: 20px; 
+  margin-right: 20px;">
+    <tr>
+        <th>Chủ Nhật</th>
+        <th>Thứ Hai</th>
+        <th>Thứ Ba</th>
+        <th>Thứ Tư</th>
+        <th>Thứ Năm</th>
+        <th>Thứ Sáu</th>
+        <th>Thứ Bảy</th>
+    </tr>
+</table>
+<script>
+var schedule = {
+  "2024-3-1": "nhập hàng online",
+  "2024-3-2": "công việc B",
+  "2024-3-25": "công việc A",
+  // Thêm các công việc cho các ngày khác nếu cần
+};
+function generateCalendar() {
+    var year = parseInt(document.getElementById("year").value);
+    var month = parseInt(document.getElementById("month").value);
+    var table = document.getElementById("calendar");
+    
+    // Xóa các hàng cũ trong bảng trừ hàng đầu tiên (tiêu đề)
+    for (var i = table.rows.length - 1; i > 0; i--) {
+        table.deleteRow(i);
+    }
+    
+    var firstDay = new Date(year, month - 1, 1).getDay();
+    var daysInMonth = new Date(year, month, 0).getDate();
+    
+    var dayCounter = 1;
+    
+    for (var i = 0; i < 6; i++) { // Tạo 6 hàng cho bảng (đủ cho một tháng)
+        var row = table.insertRow();
+        
+        for (var j = 0; j < 7; j++) { // Tạo 7 ô cho mỗi hàng (đủ cho một tuần)
+            var cell = row.insertCell();
+            if (i === 0 && j < firstDay) { // Nếu là hàng đầu tiên và không đủ ngày để hiển thị
+                cell.innerHTML = ""; // Hiển thị ô trống
+            } else if (dayCounter <= daysInMonth) { // Nếu chưa hết ngày trong tháng
+                var date = year + "-" + month + "-" + dayCounter;
+                cell.innerHTML = dayCounter; // Hiển thị số ngày
+                cell.setAttribute("data-date", date); // Thiết lập thuộc tính data-date cho ô ngày
+                cell.onclick = function() {
+                    var date = this.getAttribute("data-date");
+                    showSchedule(date);
+                };
+                dayCounter++; // Tăng biến đếm ngày
+            } else { // Nếu đã hết ngày trong tháng
+                cell.innerHTML = ""; // Hiển thị ô trống
+            }
+        }
+    }
+}
+function showSchedule(date) {
+    if (date && schedule[date]) {
+        alert("Công việc của ngày " + date + ": " + schedule[date]); // Hiển thị công việc của ngày được chọn
+    } else {
+        alert("Không có công việc nào cho ngày " + date);
+    }
+}
+</script>
+</body>
+</html>
