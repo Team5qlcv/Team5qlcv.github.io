@@ -16,6 +16,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh; /* Chiều cao của viewport */
+            overflow-x: auto; 
         }
         .centered img {
             max-width: 100%; /* Đảm bảo hình ảnh không vượt quá chiều rộng của viewport */
@@ -23,57 +24,23 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Đổ bóng cho hình ảnh */
             border-radius: 10px; /* Làm tròn góc cho hình ảnh */
         }
-        .gallery-container {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-        }
-        .gallery {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .gallery-item {
-            width: 150px;
-            height: auto;
-            margin: 10px;
-            cursor: grab;
-        }
     </style>
 </head>
 <body>
-    <div class="gallery-container" onmousedown="startDragging(event)" onmousemove="dragGallery(event)" onmouseup="stopDragging()">
-        <div class="gallery">
-            <img class="gallery-item" src="The/1.png" alt="Ảnh 1">
-            <img class="gallery-item" src="The/2.png" alt="Ảnh 2">
-            <img class="gallery-item" src="The/3.png" alt="Ảnh 3">
-            <img class="gallery-item" src="The/4.jpg" alt="Ảnh 4">
-            <img class="gallery-item" src="The/5.png" alt="Ảnh 5">
-            <img class="gallery-item" src="The/6.png" alt="Ảnh 6">
-        </div>
-    </div>
-    <script>
-        var gallery = document.querySelector('.gallery');
-        var isDragging = false;
-        var startPosition = 0;
-        var startScrollLeft = 0;
-
-        function startDragging(event) {
-            isDragging = true;
-            startPosition = event.clientX;
-            startScrollLeft = gallery.scrollLeft;
-            document.body.style.cursor = 'grabbing';
-        }
-
-        function dragGallery(event) {
-            if (!isDragging) return;
-            var delta = event.clientX - startPosition;
-            gallery.scrollLeft = startScrollLeft - delta;
-        }
-
-        function stopDragging() {
-            isDragging = false;
-            document.body.style.cursor = 'grab';
-        }
-    </script>
+    <div class="centered">
+        <img src="The/1.png" alt style="
+            margin-left: 500px;">
+        <img src="The/2.png" alt="Ảnh 2" style="
+        padding-left: 20px;">
+        <img src="The/3.png" alt="Ảnh 3"style="
+        padding-left: 20px;">
+        <img src="The/4.jpg" alt="Ảnh 4" style="
+        padding-left: 20px;">
+        <img src="The/5.png" alt="Ảnh 5" style="
+        padding-left: 20px;">
+        <img src="The/6.png" alt="Ảnh 6" style="
+        padding-left: 20px;
+        margin-right: 30px;">
+    </div> 
 </body>
 </html>
